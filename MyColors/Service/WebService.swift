@@ -22,8 +22,12 @@ struct WebService {
         }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if data != nil && error == nil {
-                let colors = try? JSONDecoder().decode([Color].self, from: data!)
-                completion(true, colors)
+                do {
+                    let colors = try JSONDecoder().decode([Color].self, from: data!)
+                    completion(true, colors)
+                } catch {
+                    print(error)
+                }
             } else {
                 completion(false, nil)
             }

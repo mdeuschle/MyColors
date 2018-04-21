@@ -6,9 +6,28 @@
 //  Copyright © 2018 Matt Deuschle. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct Color: Codable {
+struct Color: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case rank = "rank"
+        case rgb = "rgb"
+    }
     let title: String
     let rank: Int
+    let rgb: RGB
 }
+
+struct RGB: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case red = "red"
+        case green = "green"
+        case blue = "blue"
+    }
+    let red: CGFloat
+    let green: CGFloat
+    let blue: CGFloat
+}
+
+
