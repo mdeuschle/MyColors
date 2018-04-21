@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Color: Decodable {
+struct Color: Codable {
     private enum CodingKeys: String, CodingKey {
         case title = "title"
         case rank = "rank"
@@ -19,7 +19,7 @@ struct Color: Decodable {
     let rgb: RGB
 }
 
-struct RGB: Decodable {
+struct RGB: Codable {
     private enum CodingKeys: String, CodingKey {
         case red = "red"
         case green = "green"
